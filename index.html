@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>দেভলেত-ই আলিয়া-ই উসমানিয়া</title>
+    
+    <!-- গুগল ফন্ট: হেডিংয়ের জন্য সেরিফ এবং বর্ণনার জন্য স্যানস-সেরিফ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500&family=Noto+Serif+Bengali:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* মূল ভ্যারিয়েবল এবং কালার প্যালেট */
+        :root {
+            --bg-color: #0f0f11;
+            --card-bg: #1a1a1d;
+            --text-main: #e4e4e7;
+            --text-muted: #a1a1aa;
+            --accent-gold: #c5a059;
+            --accent-hover: #d4af37;
+            --border-color: #27272a;
+            --font-heading: 'Noto Serif Bengali', serif;
+            --font-body: 'Hind Siliguri', sans-serif;
+        }
+
+        /* বেসিক রিসেট ও স্মুথনেস */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* হেডার সেকশন */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(to bottom, #151518, var(--bg-color));
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header p.tagline {
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* বাবল ক্যাটাগরি নেভিগেশন */
+        .category-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .bubble {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .bubble:hover, .bubble.active {
+            background-color: var(--accent-gold);
+            color: #000;
+            border-color: var(--accent-gold);
+            font-weight: 600;
+            transform: translateY(-2px);
+        }
+
+        /* মেইন কন্টেন্ট ও পোস্ট গ্রিড */
+        main {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .post-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* পোস্ট কার্ড ডিজাইন */
+        .post-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .post-category {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .post-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+
+        .post-card:hover .post-title {
+            color: var(--accent-hover);
+        }
+
+        .post-excerpt {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .read-more {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s ease;
+        }
+
+        .post-card:hover .read-more {
+            gap: 10px;
+        }
+
+        /* ফুটার */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* রেসপন্সিভ ডিজাইন */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.2rem; }
+            .post-title { font-size: 1.5rem; }
+            .post-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>দেভলেত-ই আলিয়া-ই উসমানিয়া</h1>
+        <p class="tagline">সেন্টার ফর অটোমান স্টাডিজ, বাংলাদেশ</p>
+    </header>
+
+    <div class="category-container">
+        <nav class="categories">
+            <span class="bubble active">সব লেখা</span>
+            <span class="bubble">উসমানীয় ইতিহাস</span>
+            <span class="bubble">রুশ-তুর্কি সম্পর্ক</span>
+            <span class="bubble">দিল্লি সালতানাত</span>
+            <span class="bubble">ভূ-রাজনীতি</span>
+        </nav>
+    </div>
+
+    <main>
+        <div class="post-grid">
+            
+            <!-- পোস্ট ১ -->
+            <article class="post-card">
+                <span class="post-category">রুশ-তুর্কি সম্পর্ক</span>
+                <h2 class="post-title">চার শতাব্দীর সংঘাত: অটোমান ও রুশ সাম্রাজ্যের ভূ-রাজনৈতিক লড়াই</h2>
+                <p class="post-excerpt">কালো সাগর এবং বলকান অঞ্চলে আধিপত্য বিস্তারের লক্ষ্যে অটোমান সাম্রাজ্য এবং রাশিয়ার মধ্যে দীর্ঘ চার শতাব্দী ধরে যে সামরিক ও কূটনৈতিক দ্বন্দ্ব চলেছিল, তা আধুনিক ইউরোপের মানচিত্র নির্ধারণে বড় ভূমিকা রেখেছে।</p>
+                <div class="post-footer">
+                    <span>৭ নভেম্বর, ২০২৬</span>
+                    <a href="#" class="read-more">পড়ুন <span>→</span></a>
+                </div>
+            </article>
+
+            <!-- পোস্ট ২ -->
+            <article class="post-card">
+                <span class="post-category">উসমানীয় ইতিহাস</span>
+                <h2 class="post-title">সুলতান সুলেমান ও অটোমানদের স্বর্ণযুগ</h2>
+                <p class="post-excerpt">দশম অটোমান সুলতান প্রথম সুলেমানের শাসনামলকে অটোমান সাম্রাজ্যের স্বর্ণযুগ বলা হয়। সামরিক বিস্তারের পাশাপাশি তিনি আইন ব্যবস্থা, শিল্পকলা এবং স্থাপত্যে অভূতপূর্ব পরিবর্তন এনেছিলেন।</p>
+                <div class="post-footer">
+                    <span>৪ নভেম্বর, ২০২৬</span>
+                    <a href="#" class="read-more">পড়ুন <span>→</span></a>
+                </div>
+            </article>
+
+            <!-- পোস্ট ৩ -->
+            <article class="post-card">
+                <span class="post-category">দিল্লি সালতানাত</span>
+                <h2 class="post-title">দিল্লি সালতানাতের প্রশাসনিক কাঠামো</h2>
+                <p class="post-excerpt">ভারতীয় উপমহাদেশে প্রথম স্থায়ী মুসলিম শাসন প্রতিষ্ঠা করা দিল্লি সালতানাতের ইকতা ব্যবস্থা এবং শক্তিশালী সামরিক প্রশাসন কীভাবে তাদের শাসনকে সুসংহত করেছিল, তার বিশদ বিশ্লেষণ।</p>
+                <div class="post-footer">
+                    <span>১ নভেম্বর, ২০২৬</span>
+                    <a href="#" class="read-more">পড়ুন <span>→</span></a>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer>
+        &copy; ২০২৬ দেভলেত-ই আলিয়া-ই উসমানিয়া। সেন্টার ফর অটোমান স্টাডিজ, বাংলাদেশ।
+    </footer>
+
+</body>
+</html>
